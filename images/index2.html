@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Decorations – Where Dreams Come Alive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#C9A84C',
+            'gold-light': '#F0D080',
+            'gold-dark': '#9A7A2E',
+            cream: '#FAF6EE',
+            charcoal: '#1C1C1E',
+            'warm-gray': '#6B6560',
+          },
+         fontFamily: {
+          display: ['Cinzel', 'serif'],
+           serif: ['Cinzel', 'serif'],
+           sans: ['Montserrat', 'sans-serif'],
+
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+  --gold: #ccc4af;
+  --gold-light: #F0D080;
+  --cream: #FAF6EE;
+  --charcoal: #1C1C1E;
+}
+    html { scroll-behavior: smooth; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+   body {
+   font-family: 'Montserrat', sans-serif;
+   background: #e6dae1;
+   color: var(--charcoal);
+   overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #095d85; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* NAV */
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: #eceaea;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold-light);
+      transition: width 0.4s ease;
+    }
+    .nav-link:hover { color: var(--gold-light); }
+    .nav-link:hover::after { width: 100%; }
+
+    nav.scrolled {
+      background: rgba(28,28,30,0.97) !important;
+      box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+    }
+
+    /* HERO */
+    .hero{
+    background:linear-gradient(
+        135deg,
+        #9d23e4,
+        #777672
+    );
+}
+    .gold-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    .gold-text { color: var(--gold); }
+    .gold-bg { background: var(--gold); }
+
+    /* SECTION HEADING */
+    .section-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .section-title {
+     font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--charcoal);
+    }
+
+    /* SERVICE CARDS */
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .service-card img {
+      width: 100%; height: 320px;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .service-card:hover img { transform: scale(1.08); }
+    .service-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(104, 102, 102, 0.88) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      transition: background 0.4s;
+    }
+    .service-card:hover .overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+    }
+    .service-card .card-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+    }
+    .service-card .card-desc {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.4s ease, max-height 0.5s ease;
+    }
+    .service-card:hover .card-desc {
+      opacity: 1;
+      max-height: 80px;
+    }
+    .service-card .card-icon {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(25, 179, 50, 0.6);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .service-card:hover .card-icon {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #073b8a;
+    }
+
+    /* GALLERY */
+    /* SLIDER GALLERY */
+
+.slider-container{
+    position:relative;
+    max-width:1000px;
+    width:100%;
+    margin:0 auto;
+    padding:20px 0;
+}
+
+.slider{
+    width:100%;
+    display:block;
+}
+
+.slide{
+    display:none;
+    width:100%;
+    height:600px;
+    object-fit:cover;
+    border-radius:20px;
+    margin:0 auto;
+}
+
+.slide.active{
+    display:block;
+}
+
+.prev{
+    left:10px;
+}
+
+.next{
+    right:10px;
+}
+   /* UPLOAD BUTTON for gallery */
+    .upload-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      cursor: pointer;
+      border: 1.5px dashed var(--gold);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+    .upload-label:hover { background: var(--gold); color: #fff; }
+
+    /* TESTIMONIALS */
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: box-shadow 0.4s, transform 0.4s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 20px 60px rgba(201,168,76,0.15);
+      transform: translateY(-4px);
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: rgba(201,168,76,0.12);
+      position: absolute;
+      top: -10px; left: 16px;
+      line-height: 1;
+    }
+
+    /* CONTACT FORM */
+    .form-input {
+      width: 100%;
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.85rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+    .form-input::placeholder { color: #aaa; }
+
+    /* BTNs */
+    .btn-gold{
+    background:#b18f34;
+    color:white;
+    border:none;
+}
+
+.btn-gold:hover{
+    background:#b18f34;
+}
+
+.btn-outline{
+    border:2px solid #C9A84C;
+    color:#C9A84C;
+}
+
+    /* WA button */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      color: #f0f1f0; font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      z-index: 9999;
+      text-decoration: none;
+      animation: pulse-wa 2.5s infinite;
+      transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 4px 40px rgba(37,211,102,0.8); }
+    }
+
+    /* COUNTER SECTION */
+    .counter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    /* FADE IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* MOBILE NAV */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.5rem;
+      background: rgba(28,28,30,0.98);
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu .nav-link { font-size: 0.9rem; padding: 0.5rem 0; }
+
+    /* MARQUEE */
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 10000;
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw; max-height: 88vh;
+      object-fit: contain;
+      border: 2px solid rgba(201,168,76,0.3);
+    }
+
+    /* UPLOAD PREVIEW */
+    .upload-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    .upload-preview-grid img {
+      width: 100%; aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    /* Particle dots */
+    .hero-overlay-pattern {
+      background-image: radial-gradient(rgba(201,168,76,0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .star-divider {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .star-divider::before, .star-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .star-divider::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .slider-container{
+    max-width:1000px;
+    margin:40px auto;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.slider{
+    width:100%;
+    text-align:center;
+}
+
+.slide{
+    width:100%;
+    max-width:1000px;
+    height:600px;
+    object-fit:cover;
+    margin:auto;
+}
+.hero-video-container{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.hero-video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:rgb(15, 15, 15);
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.hero-content p{
+    font-size:1.3rem;
+}
+  </style>
+</head>
+<body>
+
+<!-- ░░ LIGHTBOX ░░ -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button onclick="closeLightbox()" style="position:absolute;top:20px;right:28px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ░░ WHATSAPP FLOAT ░░ -->
+<a href="https://wa.me/918639465355?text=Hi%20BS%20Decorations!%20I'd%20like%20to%20enquire%20about%20your%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ░░ NAVBAR ░░ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background:transparent;">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16 md:h-20">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-3 text-white no-underline">
+      <div style="width:38px;height:38px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#FAF6EE;line-height:1;">BS DECORATIONS</div>
+        <div style="font-size:0.6rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;">Where Dreams Come Alive</div>
+      </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="hidden md:flex items-center gap-8 list-none">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li>
+        <a href="https://wa.me/918639465355" target="_blank" class="btn-gold" style="padding:0.55rem 1.3rem;font-size:0.7rem;">
+          <i class="fab fa-whatsapp"></i> Book Now
+        </a>
+      </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden text-white text-xl focus:outline-none" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#about" class="nav-link" onclick="closeMenu()">About</a>
+    <a href="#services" class="nav-link" onclick="closeMenu()">Services</a>
+    <a href="#gallery" class="nav-link" onclick="closeMenu()">Gallery</a>
+    <a href="#testimonials" class="nav-link" onclick="closeMenu()">Reviews</a>
+    <a href="#contact" class="nav-link" onclick="closeMenu()">Contact</a>
+    <a href="https://wa.me/918143928577" target="_blank" class="btn-gold mt-2" style="justify-content:center;">
+      <i class="fab fa-whatsapp"></i> Book Now
+    </a>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░ -->
+<section id="hero" class="hero-bg hero-overlay-pattern min-h-screen flex flex-col justify-center items-center text-center px-5 relative">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="fade-in" style="color:var(--gold);font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;">✦ Premium Decoration Services ✦</div>
+
+    <h1 class="fade-in fade-in-delay-1 text-white mb-6"
+style="
+font-family:'Cinzel', serif;
+font-size:clamp(3.5rem,8vw,7rem);
+font-weight:700;
+line-height:1.1;
+color:#1f1f1f;
+text-shadow:2px 2px 12px rgba(255,255,255,0.5);
+">
+
+BS Decorations<br>
+
+<span style="color:#C9A84C;">
+Where Dreams
+</span><br>
+
+Come Alive
+
+</h1>
+
+<p class="fade-in fade-in-delay-2 mb-10 max-w-2xl mx-auto"
+style="
+font-family:'Poppins', sans-serif;
+font-size:1.2rem;
+color:#555;
+line-height:1.8;
+">
+
+Wedding Decorations • Birthday Events • Haldi Ceremonies • Function Hall Setup • Corporate Events
+
+</p>
+
+<div class="fade-in fade-in-delay-3 flex flex-wrap gap-4 justify-center">
+    <a href="#gallery" class="btn-gold">
+        View Gallery
+    </a>
+
+    <a href="#contact" class="btn-outline">
+        Contact Us
+    </a>
+</div>
+    <div class="fade-in fade-in-delay-3 flex flex-wrap gap-4 justify-center">
+      <a href="#services" class="btn-gold"><i class="fas fa-magic"></i> Explore Services</a>
+      <a href="#contact" class="btn-outline"><i class="fas fa-phone-alt"></i> Get a Quote</a>
+    </div>
+
+    <div class="fade-in fade-in-delay-4 mt-14 flex justify-center gap-10 flex-wrap">
+      <div class="text-center">
+        <div class="counter-num" data-target="500">0</div>
+        <div style="color:rgba(2, 2, 2, 0.65);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Events Done</div>
+      </div>
+      <div style="width:1px;background:rgba(255, 188, 5, 0.3);" class="hidden md:block"></div>
+      <div class="text-center">
+        <div class="counter-num" data-target="8">0</div>
+        <div style="color:rgba(3, 3, 3, 0.65);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Years Experience</div>
+      </div>
+      <div style="width:1px;background:rgba(247, 183, 8, 0.3);" class="hidden md:block"></div>
+      <div class="text-center">
+        <div class="counter-num" data-target="98">0</div>
+        <div style="color:rgba(10, 10, 10, 0.65);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;">Happy Clients %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2" style="animation: bounce 2s infinite;">
+    <a href="#about" style="color:rgba(5, 5, 5, 0.795);font-size:1.5rem;"><i class="fas fa-chevron-down"></i></a>
+  </div>
+  <style>@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}</style>
+</section>
+<!--video loop-->
+<div class="hero-video-container">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="videos/functionhall.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <p>KGSS FUNCTION HALL</p>
+        <h1>Bhagat Singh Decorations</h1>
+        <P>Kesamudram</P>
+    </div>
+</div>
+<!-- ░░ MARQUEE STRIP ░░ -->
+<div style="background:var(--charcoal);padding:0.85rem 0;overflow:hidden;">
+  <div class="marquee-track" id="marquee">
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Wedding Decoration</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Birthday Setups</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Haldi Ceremonies</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Stage Decoration</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Corporate Events</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Balloon Art</span>
+    <span style="color:rgba(212, 209, 20, 0.904);font-size:0.7rem;">—</span>
+    <!-- Duplicate for infinite loop -->
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Wedding Decoration</span>
+    <span style="color:rgba(235, 24, 24, 0.3);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Birthday Setups</span>
+    <span style="color:rgba(238, 23, 23, 0.3);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Haldi Ceremonies</span>
+    <span style="color:rgba(226, 29, 29, 0.3);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Stage Decoration</span>
+    <span style="color:rgba(216, 19, 19, 0.3);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Corporate Events</span>
+    <span style="color:rgba(214, 18, 18, 0.3);font-size:0.7rem;">—</span>
+    <span style="color:var(--gold);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;">✦ Balloon Art</span>
+    <span style="color:rgba(206, 10, 10, 0.3);font-size:0.7rem;">—</span>
+  </div>
+</div>
+
+<!-- ░░ ABOUT ░░ -->
+<section id="about" class="py-24 px-5" style="background:var(--cream);">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Image collage -->
+      <div class="fade-in relative">
+        <div class="relative">
+          <img src="images/20.jpeg" alt="Elegant event decoration"
+            style="width:78%;aspect-ratio:4/5;object-fit:cover;border:6px solid #141414;box-shadow:0 20px 60px rgba(0,0,0,0.12);" />
+          <img src="images/26.jpeg" alt="Floral decoration"
+            style="position:absolute;bottom:-40px;right:0;width:45%;aspect-ratio:1;object-fit:cover;border:5px solid #111111;box-shadow:0 12px 40px rgba(0,0,0,0.15);" />
+        </div>
+        <!-- Experience badge -->
+        <div style="position:absolute;top:2rem;right:0;background:var(--charcoal);padding:1.2rem 1.5rem;text-align:center;border-left:3px solid var(--gold);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;">10+</div>
+          <div style="color:#f4f5ee;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;">Years of<br/>Excellence</div>
+        </div>
+      </div>
+      <!-- Text -->
+ <!-- Text -->
+<div class="fade-in fade-in-delay-1">
+  <h1 class="section-tag mb-3">Our Story</h1>
+  <h6 class="section-title mb-6">
+    Creating Memorable Celebrations<br/>
+    <em>For Every Special Occasion</em>
+  </h6>
+
+  <div class="gold-divider mb-8" style="margin-left:0;width:50px;"></div>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.85;color:#444;margin-bottom:1.2rem;">
+    Founded by <strong>Madatha Anji</strong> from <strong>Rajulakothapally</strong>, our mission is to provide beautiful and affordable venues where families and communities can celebrate life's most important moments together.
+  </p>
+
+  <p style="color:#00060f;line-height:1.9;font-size:0.95rem;margin-bottom:2rem;">
+    We proudly manage and operate premium function halls in the Kesamudram area, serving weddings, engagements, birthdays, receptions, corporate gatherings, and cultural events. With a commitment to hospitality, quality service, and customer satisfaction, we help make every occasion truly unforgettable.
+  </p>
+
+  <div class="grid grid-cols-2 gap-4 mb-8">
+
+    <div style="padding:1rem;border:1px solid rgba(211, 207, 198, 0.25);background:#eff0ea;">
+      <i class="fas fa-building" style="color:var(--gold);font-size:1.3rem;margin-bottom:0.5rem;"></i>
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.2rem;">KGSS Function Hall</div>
+      <div style="color:#888;font-size:0.78rem;">Spacious venue for weddings & events</div>
+    </div>
+
+    <div style="padding:1rem;border:1px solid rgba(211, 207, 198, 0.25);background:#eff0ea;">
+      <i class="fas fa-map-marker-alt" style="color:var(--gold);font-size:1.3rem;margin-bottom:0.5rem;"></i>
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.2rem;">Kesamudram Location</div>
+      <div style="color:#888;font-size:0.78rem;">Conveniently located for all celebrations</div>
+    </div>
+
+    <div style="padding:1rem;border:1px solid rgba(211, 207, 198, 0.25);background:#eff0ea;">
+      <i class="fas fa-users" style="color:var(--gold);font-size:1.3rem;margin-bottom:0.5rem;"></i>
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.2rem;">Family Events</div>
+      <div style="color:#888;font-size:0.78rem;">Weddings, receptions, birthdays & more</div>
+    </div>
+
+    <div style="padding:1rem;border:1px solid rgba(211, 207, 198, 0.25);background:#eff0ea;">
+      <i class="fas fa-handshake" style="color:var(--gold);font-size:1.3rem;margin-bottom:0.5rem;"></i>
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.2rem;">Trusted Service</div>
+      <div style="color:#888;font-size:0.78rem;">Dedicated support for every event</div>
+    </div>
+
+  </div>
+
+  <div style="display:flex;gap:15px;flex-wrap:wrap;">
+    
+    <a href="#contact" class="btn-gold">
+      Book Your Event
+    </a>
+
+    <!-- Replace YOUR_GOOGLE_MAPS_LINK with actual map URL -->
+    <a href="https://maps.google.com/maps?q=17.6756851%2C79.8942176&z=17&hl=en" target="_blank" class="btn-gold"
+       style="background:#fff;color:#b08d57;border:1px solid #b08d57;">
+      View Location
+    </a>
+        <a href="#contact" class="btn-gold">
+           Work With Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SERVICES ░░ -->
+<section id="services" style="background:var(--charcoal);padding:6rem 1.25rem;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <div class="section-tag mb-3" style="color:var(--gold);">What We Do</div>
+      <h2 class="section-title mb-4" style="color:#FAF6EE;">Our Signature Services</h2>
+      <p style="color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;font-size:0.95rem;line-height:1.8;">From intimate haldi mornings to grand wedding receptions, every service is crafted with love and attention to the finest details.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 fade-in fade-in-delay-1">
+
+      <!-- Wedding -->
+      <div class="service-card">
+        <img src="images/wedding.jpeg" alt="Wedding Decoration" id="wedding-image">
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-ring"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Wedding Decoration</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Mandaps, floral arches, reception halls & more — your dream wedding, brought to life.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" accept="image/*" style="display:none;" onchange="replaceImage(this,'wedding-img')" />
+        </label>
+      </div>
+
+      <!-- Birthday -->
+      <div class="service-card">
+        <img src="images/birthday.jpeg" alt="Birthday Decoration" id="birthday-img">
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Birthday Decoration</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Theme-based setups, balloon art, photo walls & personalised decor for all ages.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" accept="image/*" style="display:none;" onchange="replaceImage(this,'birthday-img')" />
+        </label>
+      </div>
+
+      <!-- Haldi -->
+      <div class="service-card">
+        <img src="images/haldi.jpeg" alt="Haldi Decoration" id="haldi-img" />
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-sun"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Haldi Ceremony</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Bright marigolds, yellow drapes & festive vibes — the most joyful morning of your life.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" accept="image/*" style="display:none;" onchange="replaceImage(this,'haldi-img')" />
+        </label>
+      </div>
+
+      <!-- Stage -->
+      <div class="service-card">
+        <img src="images/stage.jpeg" alt="Stage Decoration" id="stage-img" />
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-theater-masks"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Stage Decoration</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Grand backdrops, LED walls, flower curtains & themed stages that command attention.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" accept="image/*" style="display:none;" onchange="replaceImage(this,'stage-img')" />
+        </label>
+      </div>
+
+      <!-- Balloon -->
+      <div class="service-card">
+        <img src="images/balloon.jpeg" alt="Balloon Decoration" id="balloon-img" />
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-circle"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Balloon Decoration</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Balloon columns, arches, bouquets, organic walls — colourful and Instagram-worthy.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" ahttpsccept="image/*" style="display:none;" onchange="replaceImage(this,'balloon-img')" />
+        </label>
+      </div>
+
+      <!-- Corporate -->
+      <div class="service-card">
+        <img src="images/Corporate.jpeg" alt="Corporate Events" id="corporate-img" />
+        <div class="overlay"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+          <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:0.3rem;">Corporate Events</h3>
+          <div class="card-desc" style="color:rgba(255,255,255,0.75);font-size:0.85rem;line-height:1.7;">Conferences, product launches, award nights & brand activations — done with class.</div>
+        </div>
+        <label class="upload-label" style="position:absolute;top:12px;right:12px;font-size:0.65rem;padding:0.35rem 0.7rem;" title="Upload your own photo">
+          <i class="fas fa-camera"></i>
+          <input type="file" accept="image/*" style="display:none;" onchange="replaceImage(this,'corporate-img')" />
+        </label>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10 fade-in">
+      <a href="#contact" class="btn-gold">
+        <i class="fas fa-phone-alt"></i> Enquire for Pricing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ WHY CHOOSE US ░░ -->
+<section style="background:var(--cream);padding:5rem 1.25rem;">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="section-tag mb-3 fade-in">Why BS Decorations</div>
+    <h2 class="section-title mb-12 fade-in fade-in-delay-1">The BS Difference</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 fade-in fade-in-delay-2">
+      <div style="text-align:center;padding:1.5rem 1rem;">
+        <div style="width:56px;height:56px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-drafting-compass" style="color:var(--gold);font-size:1.2rem;"></i></div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Custom Design</div>
+        <div style="color:#888;font-size:0.8rem;line-height:1.6;">Every setup is designed from scratch — never templated.</div>
+      </div>
+      <div style="text-align:center;padding:1.5rem 1rem;">
+        <div style="width:56px;height:56px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-truck" style="color:var(--gold);font-size:1.2rem;"></i></div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">On-Time Setup</div>
+        <div style="color:#888;font-size:0.8rem;line-height:1.6;">We've never missed a setup deadline. Your event, on schedule.</div>
+      </div>
+      <div style="text-align:center;padding:1.5rem 1rem;">
+        <div style="width:56px;height:56px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-tag" style="color:var(--gold);font-size:1.2rem;"></i></div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Fair Pricing</div>
+        <div style="color:#888;font-size:0.8rem;line-height:1.6;">Premium decor that fits your budget. No hidden costs, ever.</div>
+      </div>
+      <div style="text-align:center;padding:1.5rem 1rem;">
+        <div style="width:56px;height:56px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-heart" style="color:var(--gold);font-size:1.2rem;"></i></div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.3rem;">Made With Love</div>
+        <div style="color:#888;font-size:0.8rem;line-height:1.6;">Every detail is handled personally by our passionate team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ GALLERY ░░ -->
+<section id="gallery" style="background:#f5f0e8;padding:6rem 1.25rem;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 fade-in">
+      <div class="section-tag mb-3">Our Portfolio</div>
+      <h2 class="section-title mb-4">A Glimpse of Our Work</h2>
+      <p style="color:#888;max-width:500px;margin:0 auto 1.5rem;font-size:0.92rem;line-height:1.8;">
+        Every photo tells a story. Hover to explore. Click to zoom. And if you'd like to add your own event photos, use the upload section below!
+      </p>
+      <div class="gold-divider"></div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="slider-container">
+
+    <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+
+    <div class="slider">
+
+        <img src="images/1.jpeg" class="slide active" alt="Decoration 1">
+        <img src="images/2.jpeg" class="slide" alt="Decoration 2">
+        <img src="images/3.jpeg" class="slide" alt="Decoration 3">
+        <img src="images/4.jpeg" class="slide" alt="Decoration 4">
+        <img src="images/5.jpeg" class="slide" alt="Decoration 5">
+        <img src="images/6.jpeg" class="slide" alt="Decoration 6">
+        <img src="images/7.jpeg" class="slide" alt="Decoration 7">
+        <img src="images/21.jpeg" class="slide" alt="Decoration 8">
+        <img src="images/22.jpeg" class="slide" alt="Decoration 9">
+        <img src="images/10.jpeg" class="slide" alt="Decoration 10">
+        <img src="images/11.jpeg" class="slide" alt="Decoration 11">
+        <img src="images/12.jpeg" class="slide" alt="Decoration 12">
+        <img src="images/13.jpeg" class="slide" alt="Decoration 13">
+        <img src="images/14.jpeg" class="slide" alt="Decoration 14">
+        <img src="images/15.jpeg" class="slide" alt="Decoration 15">
+        <img src="images/16.jpeg" class="slide" alt="Decoration 16">
+        <img src="images/17.jpeg" class="slide" alt="Decoration 17">
+        <img src="images/18.jpeg" class="slide" alt="Decoration 18">
+        <img src="images/19.jpeg" class="slide" alt="Decoration 19">
+        <img src="images/20.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/23.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/24.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/25.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/26.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/27.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/28.jpeg" class="slide" alt="Decoration 20">
+        <img src="images/20.jpeg" class="slide" alt="Decoration 20">
+
+    </div>
+
+    <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+
+</div>
+    <!-- UPLOAD YOUR OWN PHOTOS -->
+    <div style="background:#fff;border:1px solid rgba(201,168,76,0.25);padding:2rem;margin-top:2rem;" class="fade-in">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;">📸 Add Your Event Photos</h3>
+      <p style="color:#888;font-size:0.85rem;margin-bottom:1rem;">Upload images of your Birthday, Wedding, Haldi or any event to showcase them here!</p>
+      <div class="flex flex-wrap gap-3 items-center">
+        <label class="upload-label">
+          <i class="fas fa-upload"></i> Upload Photos
+          <input type="file" accept="image/*" multiple style="display:none;" onchange="addGalleryImages(this)" />
+        </label>
+        <span style="color:#aaa;font-size:0.78rem;">Supports JPG, PNG, WEBP — multiple files allowed</span>
+      </div>
+      <div class="upload-preview-grid" id="upload-preview"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ TESTIMONIALS ░░ -->
+<section id="testimonials" style="background:var(--charcoal);padding:6rem 1.25rem;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 fade-in">
+      <div class="section-tag mb-3" style="color:var(--gold);">Client Love</div>
+      <h2 class="section-title mb-4" style="color:#FAF6EE;">What Our Clients Say</h2>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 fade-in fade-in-delay-1">
+      <div class="testimonial-card">
+        <div style="display:flex;gap:0.2rem;margin-bottom:1rem;">
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">"BS Decorations turned our wedding into a fairytale. Every corner was breathtaking, and our guests couldn't stop complimenting the mandap. Truly magical work!"</p>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=80&q=80" alt="Priya" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);" />
+          <div>
+            <div style="font-weight:600;font-size:0.88rem;">Priya & Arjun</div>
+            <div style="color:#aaa;font-size:0.75rem;">Wedding Clients, Mahabubabad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" style="margin-top:1.5rem;">
+        <div style="display:flex;gap:0.2rem;margin-bottom:1rem;">
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">"My daughter's 1st birthday was absolutely stunning! The balloon wall was a huge hit for photos. The team was professional, punctual, and creative beyond expectations."</p>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=80&q=80" alt="Meena" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);" />
+          <div>
+            <div style="font-weight:600;font-size:0.88rem;">Meena Reddy</div>
+            <div style="color:#aaa;font-size:0.75rem;">Birthday Client, Secunderabad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div style="display:flex;gap:0.2rem;margin-bottom:1rem;">
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star" style="color:var(--gold);font-size:0.9rem;"></i>
+          <i class="fas fa-star-half-alt" style="color:var(--gold);font-size:0.9rem;"></i>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">"Our annual corporate gala has never looked this good. BS Decorations understood our brand perfectly and delivered a polished, sophisticated environment. Will book again!"</p>
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt="Vikram" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);" />
+          <div>
+            <div style="font-weight:600;font-size:0.88rem;">Vikram Sharma</div>
+            <div style="color:#aaa;font-size:0.75rem;">Corporate Client, Hitec City</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Reviews CTA -->
+    <div class="text-center mt-12 fade-in">
+      <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1rem;">Join 500+ happy customers</p>
+      <a href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK" target="_blank" class="btn-gold">
+        <i class="fab fa-google"></i> Leave a Google Review
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ INSTAGRAM STRIP (bonus) ░░ -->
+<section style="background:linear-gradient(135deg,#C9A84C,#9A7A2E);padding:3.5rem 1.25rem;text-align:center;">
+  <div class="max-w-3xl mx-auto">
+    <i class="fab fa-instagram" style="font-size:2rem;color:#fff;margin-bottom:0.75rem;display:block;"></i>
+    <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.8rem;margin-bottom:0.5rem;">Follow Our Journey</h3>
+    <p style="color:rgba(255,255,255,0.8);margin-bottom:1.5rem;font-size:0.95rem;">Tag us in your photos with <strong>@bsdecorations</strong> and get featured on our page!</p>
+    <a href="https://www.instagram.com/anji_bs_events_/" target="_blank" class="">
+      <i class="fab fa-instagram"></i> @bsdecorations
+    </a>
+  </div>
+</section>
+
+<!-- ░░ CONTACT ░░ -->
+<section id="contact" style="background:var(--cream);padding:6rem 1.25rem;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 fade-in">
+      <div class="section-tag mb-3">Let's Talk</div>
+      <h2 class="section-title mb-4">Book Your Dream Event</h2>
+      <p style="color:#888;max-width:500px;margin:0 auto;font-size:0.92rem;line-height:1.8;">Fill in your details below and we'll get back to you within 2 hours. Or reach out directly via WhatsApp for an instant response!</p>
+    </div>
+    
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+
+      <!-- Contact Info -->
+      <div class="fade-in">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1.5rem;">Reach Us Directly</h3>
+
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem;">
+          <a href="tel:+918639465355" style="display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;padding:1rem;background:#fff;border:1px solid rgba(201,168,76,0.2);transition:box-shadow 0.3s;" onmouseover="this.style.boxShadow='0 8px 30px rgba(201,168,76,0.12)'" onmouseout="this.style.boxShadow='none'">
+            <div style="width:46px;height:46px;background:var(--charcoal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fas fa-phone-alt" style="color:var(--gold);font-size:1rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:1px;">Call Us</div>
+              <div style="font-weight:600;font-size:1rem;">+91 86394 65355</div>
+            </div>
+          </a>
+
+          <a href="https://wa.me/918639465355" target="_blank" style="display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;padding:1rem;background:#fff;border:1px solid rgba(201,168,76,0.2);transition:box-shadow 0.3s;" onmouseover="this.style.boxShadow='0 8px 30px rgba(37,211,102,0.12)'" onmouseout="this.style.boxShadow='none'">
+            <div style="width:46px;height:46px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fab fa-whatsapp" style="color:#fff;font-size:1.2rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:1px;">WhatsApp</div>
+              <div style="font-weight:600;font-size:1rem;">Chat with us now</div>
+            </div>
+          </a>
+
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:#fff;border:1px solid rgba(201,168,76,0.2);">
+            <div style="width:46px;height:46px;background:var(--charcoal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fas fa-map-marker-alt" style="color:var(--gold);font-size:1rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:1px;">Location</div>
+              <div style="font-weight:600;font-size:0.95rem;">Mahabubabad, Telangana</div>
+              <div style="color:#aaa;font-size:0.8rem;">Serving all of Mahabubabad & surroundings</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:1.5rem;background:var(--charcoal);border-left:3px solid var(--gold);">
+          <div style="color:var(--gold);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">Business Hours</div>
+          <div style="color:#fff;font-size:0.9rem;line-height:1.9;">
+            Mon – Sat: 9:00 AM – 9:00 PM<br/>
+            Sunday: 9:00 AM – 9:00 PM<br/>
+            <span style="color:var(--gold);">Available 24/7 via WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="fade-in fade-in-delay-1">
+        <form id="contact-form" onsubmit="submitForm(event)" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="grid grid-cols-2 gap-4">
+            <input type="text" name="from_name" class="form-input" placeholder="Your Name *" required />
+            <input type="tel" name="phone" class="form-input" placeholder="Phone Number *" required />
+          </div>
+          <input type="email" name="email" class="form-input" placeholder="Email Address" />
+          <select name="event_type" class="form-input" required>
+            <option value="" disabled selected>Select Event Type *</option>
+            <option>Wedding Decoration</option>
+            <option>Birthday Decoration</option>
+            <option>Haldi Ceremony</option>
+            <option>Stage Decoration</option>
+            <option>Balloon Decoration</option>
+            <option>Corporate Event</option>
+            <option>Other</option>
+          </select>
+          <div class="grid grid-cols-2 gap-4">
+            <input type="date" name="event_date" class="form-input" />
+            <input type="text" name="venue" class="form-input" placeholder="Venue / Location" />
+          </div>
+          <textarea name="message" class="form-input" rows="4" placeholder="Tell us about your dream event — theme, colours, preferences..."></textarea>
+          <button type="submit" class="btn-gold" style="width:100%;justify-content:center;padding:1rem;">
+            <i class="fas fa-paper-plane"></i> Send Enquiry
+          </button>
+          <div id="form-success" style="display:none;background:#f0fdf4;border:1px solid #86efac;padding:1rem;color:#166534;font-size:0.9rem;text-align:center;">
+            ✅ Your enquiry has been sent! We'll reach out within 2 hours.
+          </div>
+          <div id="form-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;padding:1rem;color:#991b1b;font-size:0.9rem;text-align:center;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer style="background:#111;padding:3rem 1.25rem 1.5rem;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-10 mb-8">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#FAF6EE;margin-bottom:0.5rem;">BS DECORATIONS</div>
+        <div style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;">Where Dreams Come Alive</div>
+        <p style="color:#666;font-size:0.85rem;line-height:1.8;">Crafting unforgettable celebrations across Mahabubabad with passion, precision & premium decor.</p>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <a href="#about" style="color:#666;font-size:0.85rem;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#666'">About Us</a>
+          <a href="#services" style="color:#666;font-size:0.85rem;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#666'">Our Services</a>
+          <a href="#gallery" style="color:#666;font-size:0.85rem;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#666'">Gallery</a>
+          <a href="#contact" style="color:#666;font-size:0.85rem;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#666'">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Follow Us</div>
+        <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;">
+          <a href="https://www.instagram.com/anji_bs_events_/" target="_blank" style="width:38px;height:38px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#aaa;transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='#333';this.style.color='#aaa'"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1BEFWbocqN/" target="_blank" style="width:38px;height:38px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#aaa;transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='#333';this.style.color='#aaa'"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/918639465355" target="_blank" style="width:38px;height:38px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#aaa;transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='#25D366';this.style.color='#25D366'" onmouseout="this.style.borderColor='#333';this.style.color='#aaa'"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.youtube.com/" target="_blank" style="width:38px;height:38px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#aaa;transition:all 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='#FF0000';this.style.color='#FF0000'" onmouseout="this.style.borderColor='#333';this.style.color='#aaa'"><i class="fab fa-youtube"></i></a>
+        </div>
+        <a href="https://wa.me/918639465355?text=Hi!%20I%20want%20to%20book%20a%20decoration." target="_blank" class="btn-gold" style="font-size:0.72rem;padding:0.7rem 1.4rem;">
+          <i class="fab fa-whatsapp"></i> Book on WhatsApp
+        </a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #222;padding-top:1.5rem;text-align:center;color:#444;font-size:0.78rem;">
+      © 2025 BS Decorations. All rights reserved. Designed with ♥ in Mahabubabad.
+    </div>
+  </div>
+</footer>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const m = document.getElementById('mobile-menu');
+    m.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    let current = 0;
+    const step = target / 60;
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      el.textContent = Math.floor(current) + (el.textContent.includes('+') || target > 50 ? '+' : '%');
+    }, 25);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.classList.contains('counted')) {
+        e.target.classList.add('counted');
+        animateCounter(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Replace service image
+  function replaceImage(input, imgId) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById(imgId).src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Upload gallery photos
+  function addGalleryImages(input) {
+    const preview = document.getElementById('upload-preview');
+    const files = Array.from(input.files);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.cursor = 'pointer';
+        img.onclick = () => openLightbox(e.target.result);
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ── EmailJS Setup ──────────────────────────────────────────────
+  emailjs.init("WBsCtGiF8AmJOn91I");
+
+  function submitForm(event) {
+    event.preventDefault();
+
+    const form        = document.getElementById('contact-form');
+    const btn         = form.querySelector('button[type="submit"]');
+    const successBox  = document.getElementById('form-success');
+    const errorBox    = document.getElementById('form-error');
+
+    // Disable button while sending
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    if (errorBox) errorBox.style.display = 'none';
+    successBox.style.display = 'none';
+
+    // Collect all form field values via their name attributes
+    const templateParams = {
+      name  : form.from_name.value,
+      phone      : form.phone.value,
+      email      : form.email.value,
+      event_type : form.event_type.value,
+      event_date : form.event_date.value || 'Not specified',
+      venue      : form.venue.value      || 'Not specified',
+      message    : form.message.value    || 'No message provided'
+    };
+
+    emailjs.send("service_lb5iura", "template_dhtx7n6", templateParams)
+      .then(function () {
+        // Success
+        successBox.style.display = 'block';
+        form.reset();
+      })
+      .catch(function (error) {
+        // Show inline error instead of ugly alert
+        if (errorBox) {
+          errorBox.style.display = 'block';
+          errorBox.textContent   = '❌ Could not send. Please try WhatsApp or call us directly.';
+        }
+        console.error('EmailJS error:', error);
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Enquiry';
+      });
+  }
+</script>
+</body>
+
+</html>
